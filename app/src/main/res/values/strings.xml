@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Popular Movies App</string>
+    <string name="menu_popular">Popular</string>
+    <string name="menu_top_rated">Top Rated</string>
+    <string name="detail_activity_name">Movie Detail</string>
+    <string name="error_message">An error has occurred. Please try again later.</string>
+    <string name="rating_title">Rating</string>
+    <string name="release_date_title">Release Date</string>
+</resources>
