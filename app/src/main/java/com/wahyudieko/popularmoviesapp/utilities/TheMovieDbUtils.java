@@ -20,7 +20,7 @@ public class TheMovieDbUtils {
     private static final String REVIEW_PATH = "reviews";
     private static final String IMAGE_TYPE= "w185";
     private static final String API_QUERY = "api_key";
-    private static final String MY_API_KEY = "3fbf081050946ce60b2d3133a6476593";
+    private static final String MY_API_KEY = "PLEASE PUT YOUR API KEY HERE";
 
     public static URL buildImageUrl(String imagePath){
         Uri builtUri = Uri.parse(BASE_IMAGE_API_URL).buildUpon()
