@@ -13,6 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity"
+            android:launchMode="singleTop"
             android:configChanges="orientation|keyboardHidden|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,6 +24,16 @@
         <activity android:name=".DetailActivity"
             android:label="@string/detail_activity_name">
         </activity>
+
+        <!-- content provider -->
+        <provider
+            android:enabled="true"
+            android:exported="false"
+            android:syncable="true"
+            android:authorities="@string/content_authority"
+            android:name=".data.MovieProvider"/>
+
+
     </application>
 
 </manifest>

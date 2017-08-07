@@ -2,8 +2,21 @@
     <string name="app_name">Popular Movies App</string>
     <string name="menu_popular">Popular</string>
     <string name="menu_top_rated">Top Rated</string>
+    <string name="menu_favorite">Favorite</string>
     <string name="detail_activity_name">Movie Detail</string>
     <string name="error_message">An error has occurred. Please try again later.</string>
+    <string name="empty_favorite">Favorite movie data is empty</string>
     <string name="rating_title">Rating</string>
     <string name="release_date_title">Release Date</string>
+    <string name="mark_as_favorite">Mark as Favorite</string>
+    <string name="remove_favorite">Remove Favorite</string>
+    <string name="error_message_review">Cannot load reviews. \nPlease check your internet connection.</string>
+    <string name="error_message_trailer">Cannot load trailers. \nPlease check your internet connection.</string>
+    <string name="header_trailers">Trailers:</string>
+    <string name="header_reviews">Reviews:</string>
+    <string name="no_trailer">No trailer</string>
+    <string name="no_review">No review</string>
+    <string name="share_movie">Share</string>
+    <string name="content_authority">com.wahyudieko.popularmoviesapp</string>
+
 </resources>

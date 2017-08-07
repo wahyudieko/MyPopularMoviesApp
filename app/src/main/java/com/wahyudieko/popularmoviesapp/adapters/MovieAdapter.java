@@ -1,8 +1,6 @@
-package com.wahyudieko.popularmoviesapp;
+package com.wahyudieko.popularmoviesapp.adapters;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,10 +10,11 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.DataSource;
-import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
+import com.wahyudieko.popularmoviesapp.R;
+import com.wahyudieko.popularmoviesapp.entities.Movie;
 import com.wahyudieko.popularmoviesapp.utilities.TheMovieDbUtils;
 
 import java.net.URL;
@@ -56,7 +55,6 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieAdapter
         @Override
         public void onClick(View v) {
             int adapterPosition = getAdapterPosition();
-            //String movieSingle = mMovieData[adapterPosition];
             Movie movieSingle = mMovieList.get(adapterPosition);
             mClickHandler.onClick(movieSingle);
         }
@@ -75,22 +73,20 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieAdapter
 
     @Override
     public void onBindViewHolder(final MovieAdapterViewHolder movieAdapterViewHolder, int position) {
-        //String movieForThisDay = mMovieData[position];
         Movie movie = mMovieList.get(position);
-        //movieAdapterViewHolder.mMovieExample.setText(movie.title);
-        String posterPath = movie.posterPath;
+        String posterPath = movie.getPosterPath();
         URL imageUrl = TheMovieDbUtils.buildImageUrl(posterPath);
         Log.v("MovieAdapter.java", "Image URL - "+ imageUrl);
         Glide.with(mContext).load(imageUrl)
-                .listener(new RequestListener<Drawable>() {
+                .listener(new RequestListener<URL, GlideDrawable>() {
                     @Override
-                    public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                    public boolean onException(Exception e, URL model, Target<GlideDrawable> target, boolean isFirstResource) {
                         movieAdapterViewHolder.loadImageProgressBar.setVisibility(View.GONE);
                         return false;
                     }
 
                     @Override
-                    public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                    public boolean onResourceReady(GlideDrawable resource, URL model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
                         movieAdapterViewHolder.loadImageProgressBar.setVisibility(View.GONE);
                         return false;
                     }
@@ -100,21 +96,11 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieAdapter
 
     @Override
     public int getItemCount() {
-//        if (null == mMovieData) return 0;
-//        return mMovieData.length;
         if (null == mMovieList) return 0;
         return mMovieList.size();
     }
 
-
-    public void setMovieData(List<Movie> movieList){
-        //mMovieData = movieData;
-        mMovieList = movieList;
-        notifyDataSetChanged();
-    }
-
     public void setMovieList(List<Movie> movieList){
-        //mMovieData = movieData;
         mMovieList = movieList;
         notifyDataSetChanged();
     }

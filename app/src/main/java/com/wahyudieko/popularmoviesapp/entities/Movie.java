@@ -1,4 +1,4 @@
-package com.wahyudieko.popularmoviesapp;
+package com.wahyudieko.popularmoviesapp.entities;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -9,21 +9,71 @@ import android.os.Parcelable;
 
 public class Movie implements Parcelable {
 
-    final String title;
-    final String releaseDate;
-    final String posterPath;
-    final Double voteAverage;
-    final String overview;
+    private int id;
+    private String title;
+    private String releaseDate;
+    private String posterPath;
+    private Double voteAverage;
+    private String overview;
 
-    public Movie (String title, String releaseDate, String posterPath, Double voteAverage, String overview){
+    public Movie() {
+
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getReleaseDate() {
+        return releaseDate;
+    }
+
+    public void setReleaseDate(String releaseDate) {
         this.releaseDate = releaseDate;
+    }
+
+    public String getPosterPath() {
+        return posterPath;
+    }
+
+    public void setPosterPath(String posterPath) {
         this.posterPath = posterPath;
+    }
+
+    public Double getVoteAverage() {
+        return voteAverage;
+    }
+
+    public void setVoteAverage(Double voteAverage) {
         this.voteAverage = voteAverage;
+    }
+
+    public String getOverview() {
+        return overview;
+    }
+
+    public void setOverview(String overview) {
         this.overview = overview;
     }
 
-    private Movie(Parcel in){
+    public static Creator<Movie> getCREATOR() {
+        return CREATOR;
+    }
+
+    public Movie(Parcel in){
+        id = in.readInt();
         title = in.readString();
         releaseDate = in.readString();
         posterPath = in.readString();
@@ -38,6 +88,7 @@ public class Movie implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(id);
         parcel.writeString(title);
         parcel.writeString(releaseDate);
         parcel.writeString(posterPath);

@@ -9,17 +9,19 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerview_movie"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
 
     <TextView
         android:id="@+id/tv_error_message_display"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        android:text="@string/error_message"
+        android:gravity="center"
+        android:layout_gravity="center"
         android:textSize="20sp"
         android:textColor="@color/colorWhite"
-        android:visibility="gone" />
+        android:visibility="visible" />
 
     <ProgressBar
         android:id="@+id/pb_loading_indicator"
@@ -28,5 +30,12 @@
         android:layout_margin="24dp"
         android:layout_gravity="center"
         android:visibility="gone" />
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview_favorite_movie"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
 
 </FrameLayout>
