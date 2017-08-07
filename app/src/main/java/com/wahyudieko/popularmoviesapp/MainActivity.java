@@ -213,6 +213,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
         int id = item.getItemId();
         switch (id){
             case R.id.action_popular:
+                getSupportLoaderManager().destroyLoader(FAVORITE_MOVIES_LOADER_ID);
                 if(NetworkUtils.isConnected(this)){
                     movieType = "popular";
                     getSupportLoaderManager().restartLoader(MOVIES_LOADER_ID, null, this);
@@ -222,6 +223,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
                 }
                 return true;
             case R.id.action_top_rated:
+                getSupportLoaderManager().destroyLoader(FAVORITE_MOVIES_LOADER_ID);
                 if(NetworkUtils.isConnected(this)){
                     movieType = "top_rated";
                     getSupportLoaderManager().restartLoader(MOVIES_LOADER_ID, null, this);
@@ -231,13 +233,9 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
                 }
                 return true;
             case R.id.action_favorite:
-                //getSupportLoaderManager().restartLoader(FAVORITE_MOVIES_LOADER_ID, null, this);
                 int favoriteLoaderId = FAVORITE_MOVIES_LOADER_ID;
-
                 Bundle bundleForFavoriteLoader = null;
-
                 getSupportLoaderManager().initLoader(favoriteLoaderId, bundleForFavoriteLoader, dataFavoriteLoaderListener);
-
                 return true;
         }
         return super.onOptionsItemSelected(item);
